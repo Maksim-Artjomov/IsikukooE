@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 public class IdCode
@@ -8,7 +8,7 @@ public class IdCode
     public IdCode(string idCode)
     {
         _idCode = idCode;
-    } 
+    }
 
     private bool IsValidLength()
     {
@@ -112,14 +112,12 @@ public class IdCode
         {
             return total % 11 == controlNumber;
         }
-        // second round
         int[] weights2 = { 3, 4, 5, 6, 7, 8, 9, 1, 2, 3 };
         total = CalculateControlNumberWithWeights(weights2);
         if (total % 11 < 10)
         {
             return total % 11 == controlNumber;
         }
-        // third round, control number has to be 0
         return controlNumber == 0;
     }
 
@@ -130,7 +128,7 @@ public class IdCode
                 IsValidDay() && IsValidControlNumber();
     }
 
-    public DateTime? GetBirthDate()
+    public DateTime? GetBirthDate() //DateTime который допускает null
     {
         int day = GetDay();
         int month = GetMonth();
